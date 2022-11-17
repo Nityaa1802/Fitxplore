@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Trainer extends Subscriber {
     private String image;
     private String workoutType;
-    private String file;
+    private String achievementFile;
     @Column(length = 1802)
     private String description;
     private int workExperience;
@@ -31,12 +31,12 @@ public class Trainer extends Subscriber {
         this.workoutType = workoutType;
     }
 
-    public String getFile() {
-        return file;
+    public String getAchievementFile() {
+        return achievementFile;
     }
 
-    public void setFile(String file) {
-        this.file = file;
+    public void setAchievementFile(String file) {
+        this.achievementFile = file;
     }
 
     public String getDescription() {
@@ -60,20 +60,34 @@ public class Trainer extends Subscriber {
         if (this == o) return true;
         if (!(o instanceof Trainer trainer)) return false;
         if (!super.equals(o)) return false;
-        return getWorkExperience() == trainer.getWorkExperience() && Objects.equals(getImage(), trainer.getImage()) && Objects.equals(getWorkoutType(), trainer.getWorkoutType()) && Objects.equals(getFile(), trainer.getFile()) && Objects.equals(getDescription(), trainer.getDescription());
+        return getWorkExperience() == trainer.getWorkExperience() && Objects.equals(getImage(), trainer.getImage()) && Objects.equals(getWorkoutType(), trainer.getWorkoutType()) && Objects.equals(getAchievementFile(), trainer.getAchievementFile()) && Objects.equals(getDescription(), trainer.getDescription());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getImage(), getWorkoutType(), getFile(), getDescription(), getWorkExperience());
+        return Objects.hash(super.hashCode(), getImage(), getWorkoutType(), getAchievementFile(), getDescription(), getWorkExperience());
     }
 
     @Override
     public String toString() {
         return "Trainer{" +
+                "userName='" + getUserName()+ '\'' +
+                ", FirstName='" + getFirstName() + '\'' +
+                ", LastName='" + getLastName() + '\'' +
+                ", contactNumber='" + getContactNumber() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", password='" + getPassword() + '\'' +
+                ", dateOfBirth=" + getDateOfBirth() +
+                ", sex='" + getSex() + '\'' +
+                ", city='" + getCity() + '\'' +
+                ", country='" + getCountry() + '\'' +
+                ", state='" + getState() + '\'' +
+                ", address1='" + getAddress1() + '\'' +
+                ", address2='" + getAddress2() + '\'' +
+                ", zipCode=" + getZipCode() +
                 "image='" + image + '\'' +
                 ", workoutType='" + workoutType + '\'' +
-                ", file='" + file + '\'' +
+                ", achievementsFile='" + achievementFile + '\'' +
                 ", description='" + description + '\'' +
                 ", workExperience=" + workExperience +
                 '}';
