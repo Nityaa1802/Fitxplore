@@ -1,13 +1,12 @@
 package com.example.fitxplore.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Subscriber implements Serializable {
+public class Subscriber  {
     @Id
     private String userName;
     private String FirstName;
@@ -23,7 +22,8 @@ public class Subscriber implements Serializable {
     private String country;
     private String state;
     @Column(length = 500)
-    private String address;
+    private String address1;
+    private String address2;
     private int zipCode;
 
     public String getUserName() {
@@ -122,12 +122,20 @@ public class Subscriber implements Serializable {
         this.state = state;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAddress1() {
+        return address1;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddress1(String address1) {
+        this.address1 = address1;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
     }
 
     public int getZipCode() {
@@ -142,12 +150,12 @@ public class Subscriber implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Subscriber that)) return false;
-        return getZipCode() == that.getZipCode() && Objects.equals(getUserName(), that.getUserName()) && Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getContactNumber(), that.getContactNumber()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getPassword(), that.getPassword()) && Objects.equals(getDateOfBirth(), that.getDateOfBirth()) && Objects.equals(getDateOfSubscription(), that.getDateOfSubscription()) && Objects.equals(getSex(), that.getSex()) && Objects.equals(getCity(), that.getCity()) && Objects.equals(getCountry(), that.getCountry()) && Objects.equals(getState(), that.getState()) && Objects.equals(getAddress(), that.getAddress());
+        return getZipCode() == that.getZipCode() && Objects.equals(getUserName(), that.getUserName()) && Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getContactNumber(), that.getContactNumber()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getPassword(), that.getPassword()) && Objects.equals(getDateOfBirth(), that.getDateOfBirth()) && Objects.equals(getDateOfSubscription(), that.getDateOfSubscription()) && Objects.equals(getSex(), that.getSex()) && Objects.equals(getCity(), that.getCity()) && Objects.equals(getCountry(), that.getCountry()) && Objects.equals(getState(), that.getState()) && Objects.equals(getAddress1(), that.getAddress1()) && Objects.equals(getAddress2(), that.getAddress2());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUserName(), getFirstName(), getLastName(), getContactNumber(), getEmail(), getPassword(), getDateOfBirth(), getDateOfSubscription(), getSex(), getCity(), getCountry(), getState(), getAddress(), getZipCode());
+        return Objects.hash(getUserName(), getFirstName(), getLastName(), getContactNumber(), getEmail(), getPassword(), getDateOfBirth(), getDateOfSubscription(), getSex(), getCity(), getCountry(), getState(), getAddress1(), getAddress2(), getZipCode());
     }
 
     @Override
@@ -165,7 +173,8 @@ public class Subscriber implements Serializable {
                 ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
                 ", state='" + state + '\'' +
-                ", address='" + address + '\'' +
+                ", address1='" + address1 + '\'' +
+                ", address2='" + address2 + '\'' +
                 ", zipCode=" + zipCode +
                 '}';
     }
