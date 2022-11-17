@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8"  >
+    <title>Input Details</title>
+</head>
+<body>
+<section>
+    <div class="container w-50 " >
+        <form class="shadow p-3 mb-5 bg-body rounded" th:action="@{/trainerRegister} " th:object="${trainer}" method="post">
+            <div class="container w-85">
+                <!-- header image and heading  -->
+                <div class="row m-3">
+                    <div class="col-sm-7">
+                        <h1 class="mt-5">MAKE FIT with us
+                        </h1>
+                        <h2>
+                            ......
+                        </h2>
+                    </div>
+                    <div class="col-sm-3  mr-4">
+                        <img w-75
+                             src="https://www.jotform.com/uploads/aasthaadubeyy/form_files/download%20(3).63616670bcdd58.24889403.jpg"
+                             alt="get fit illustration" />
+
+                    </div>
+                    <div class="col-lg-1"></div>
+
+                </div>
+
+
+                <hr>
+
+
+                <!-- input details start -->
+
+                <div class="row m-4">
+                    <label  class="col-sm-4 col-form-label">Name</label>
+                    <div class="col-sm-8 ">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" th:value="${trainer.firstName}" name="firstName">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" th:value="${trainer.lastName}" name="lastName">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <label for="sex" class="col-sm-4 col-form-label">Sex</label>
+                    <div class="col-sm-8">
+                        <select id="sex" class="form-select" th:value="${trainer.sex}" name="sex">
+                            <option selected>choose</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Others</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row m-3">
+                    <label for="email" class="col-sm-4 col-form-label">Email</label>
+                    <div class="col-sm-8">
+                        <input type="email" class="form-control" id="email" name="email" th:value="${trainer.email}">
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <label for="contactNo" class="col-sm-4 col-form-label">Contact</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="contactNo" placeholder="(000) 00 0000" name="contactNumber" th:value="${trainer.contactNumber}">
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <label  class="col-sm-4 col-form-label">Address</label>
+                    <div class="col-sm-8">
+                        <div class="row mb-3">
+                            <label for="address1" class="col-sm-4 col-form-label">Address 1</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="address1" placeholder="1234 Main St" name="address1" th:value="${trainer.address1}">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="address2" class="col-sm-4 col-form-label">Address 2</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="address2" placeholder="Apartment, studio, or floor" name="address2" th:value="${trainer.address2}">
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" id="city" name="city" th:value="${trainer.city}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="state" class="form-label">State</label>
+                                <input type="text" class="form-control" id="state" name="state" th:value="${trainer.state}">
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-7">
+                                <label for="country" class="form-label">Country</label>
+                                <input type="text" class="form-control" id="country"  name="country" th:value="${trainer.country}">
+                            </div>
+                            <div class="col-md-5">
+                                <label for="zip" class="form-label">Zip</label>
+                                <input type="text" class="form-control" id="zip"  name="zipCode" th:value="${trainer.zipCode}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <hr>
+
+                <!-- input details section 2 -->
+
+                <div class="my-4">
+                    <div class="row m-3">
+                        <label for="username" class="col-sm-4 col-form-label">Username</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="username" name="userName">
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <label for="password" class="col-sm-4 col-form-label">Password</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- input detail section 3 -->
+
+                <div class="row m-3">
+                    <label for="workoutType" class="col-sm-4 col-form-label">WorkoutType</label>
+                    <div class="col-sm-8">
+                        <select name="workoutType" id="workoutType" class="form-select" th:value="${trainer.workoutType}">
+                            <option selected>Exercise(default)</option>
+                            <option>Gym Trainer</option>
+                            <option>Yoga</option>
+                            <option>Zumba</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- input section 4 -->
+
+                <hr>
+                <div class="my-4">
+                    <div class="row m-3">
+                        <label for="workExperience" class="col-sm-4 col-form-label">Work Experience</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="workExperience" name="workExperience">
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <label for="achievements" class="col-sm-4">Achievements</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <div class="col-sm-12"> <input type="file" class="form-control  " id="achievements" name="achievements"></div>
+<!--                                <div class="col-sm-3">-->
+<!--                                    <label class="input-group-text" for="achievements">Upload</label>-->
+<!--                                </div>-->
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row m-3">
+                        <label for="description" class="col-sm-4 col-form-label">Description </label>
+                        <div class="form-floating col-sm-8 ">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="description" style="height: 100px" name="description"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- upload photo -->
+
+                <div class="row m-3 my-4">
+                    <label for="uploadImage" class="col-sm-4">Upload Photo</label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <div class="col-sm-12"> <input type="file" class="form-control  " id="uploadImage" name="uploadPhoto"></div>
+<!--                            <div class="col-sm-3">-->
+<!--                                <label class="input-group-text" for="uploadImage">Upload</label>-->
+<!--                            </div>-->
+                        </div>
+
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- next button -->
+                <div class="row m-3">
+                    <div class="col-sm-10 "></div>
+                    <div class="col-sm-1 m-1">
+                      <button type="submit" class="btn btn-secondary text-white"> Next></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</section>
+</body>
+</html>
+
