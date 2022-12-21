@@ -1,7 +1,7 @@
 package com.mycompany.crudapp;
 
 import com.mycompany.crudapp.dao.UserRepository;
-import com.mycompany.crudapp.model.User;
+import com.mycompany.crudapp.user.User;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
