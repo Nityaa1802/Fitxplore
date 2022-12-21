@@ -1,7 +1,8 @@
 package com.mycompany.crudapp.service;
 
 import com.mycompany.crudapp.dao.UserRepository;
-import com.mycompany.crudapp.model.User;
+import com.mycompany.crudapp.service.UserNotFoundException;
+import com.mycompany.crudapp.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,10 +31,10 @@ public class UserService {
         }
     }
     public void delete(Integer id) throws UserNotFoundException {
-        if (repository.countById(id) == null || repository.countById(id) == 0){
+        Long count=repository.countById(id);
+        if ( count== null || count == 0){
             throw new UserNotFoundException("Could not find any users with ID" + id);
     }
-        else {
         repository.deleteById(id);
-    }}
+    }
 }
