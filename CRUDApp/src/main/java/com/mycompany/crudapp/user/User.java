@@ -1,4 +1,4 @@
-package com.mycompany.crudapp.model;
+package com.mycompany.crudapp.user;
 
 import javax.persistence.*;
 
