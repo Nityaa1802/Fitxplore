@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title> Trainer Dashboard</title>
+</head>
+<style>
+  body {
+    background: rgb(243, 243, 254);
+  }
+  .ttRow{
+    background: #E1EEFF;
+    height: 15px;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0px 2vh;
+
+  }
+  td{
+    font-weight: 450;
+
+  }
+  th{
+    font-weight: 500;
+  }
+  #ttDate{
+    background-color: rgb(243, 243, 254);
+  }
+
+</style>
+</head>
+<body>
+<section class="row ">
+
+  <!-- left part start-->
+
+  <div class="col-2 bg-white  m-2 " >
+    <h3 class="text-end m-3 ">FitXplore</h3>
+    <ul class="list-group list-group-flush  p-2">
+      <li class="list-group-item">An item</li>
+      <li class="list-group-item">A second item</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A fourth item</li>
+      <li class="list-group-item">And a fifth one</li>
+      <li class="list-group-item">And a fifth one</li>
+    </ul>
+
+  </div>
+
+  <!-- left part end-->
+
+  <!-- right part start-->
+
+  <div class="col ">
+
+    <!-- name portion start-->
+    <div class="bg-white m-2 px-2 p-1 " >
+      <div class="d-inline-block">
+        <h5 class="fw-normal fs-5 " th:text="'Hello '+${trainer.getName()}+','">
+
+        </h5>
+        <h6 class="fst-italic fw-lighter fs-6">
+          Let's Train
+        </h6>
+      </div >
+      <div class=" d-inline-block float-end m-2">
+        <i class="fas fa-bell fs-3 m-2 "></i>
+        <i class="fas fa-user  fs-3 m-2 " ></i>
+      </div>
+    </div>
+
+    <!-- name portion end-->
+
+    <!-- three boxes  start-->
+
+    <div class="row mx-auto">
+      <div class="col bg-white my-2 row mx-1">
+        <div class="col-5"> <img src="/img/trainee icon.jpg" alt="" class="w-75 my-3 mx-auto  d-flex  "> </div>
+        <div class="col">  <h4 class="fw-light text-end   pt-4 ">Total Trainees</h4> <h1 class=" text-end px-4">32</h1></div>
+      </div>
+      <div class="col bg-white my-2 row mx-1">
+        <div class="col-5"> <img src="/img/leadersboard icon.jpg" alt="" class="w-75 my-3 mx-auto  d-flex  "> </div>
+        <div class="col">  <h4 class="fw-light text-end    pt-4 ">Leadersboard</h4> <h1 class=" text-end ">150/200</h1></div>
+      </div>
+      <div class="col bg-white my-2 row mx-1">
+        <div class="col-5"> <img src="/img/score icon image.jpg"  alt="" class="w-75 my-3 mx-auto  d-flex  "> </div>
+        <div class="col">  <h4 class="fw-light text-end   pt-4 ">Points/Scores</h4> <h1 class=" text-end px-4">1123</h1></div>
+      </div>
+    </div>
+
+    <!-- three boxes end-->
+
+    <!-- timetable start -->
+
+    <div class="bg-white col-8">
+      <h1 class="text-primary px-3 pt-3 d-inline-block">Today's Timetable</h1>
+      <input id="ttDate" class="form-control w-25 d-inline float-end m-4 " type="date" />
+
+      <table class="table table-borderless px-2">
+        <thead>
+        <tr>
+          <th scope="col" class="px-4 text-center">S.No</th>
+          <th scope="col" class="px-4 text-center">Session ID</th>
+          <th scope="col" class="px-4 text-center">Schedule</th>
+          <th scope="col" class="px-4 text-center">Time</th>
+          <th scope="col" class="px-4 text-center">Status</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        <tr  class="ttRow">
+          <th scope="row" class="p-4  text-center  " >1</th>
+          <td class="p-4 text-center ">Gym Training </td>
+          <td class="p-4 text-center ">Morning Shift</td>
+          <td class="p-4  text-center" >8:00-10:00</td>
+          <td class="p-4 text-center "><div class="border border-2 rounded-pill border-primary h-25 text-primary text-center fw-bold">Upcoming</div></td>
+        </tr>
+
+        <tr  class="ttRow">
+          <th scope="row" class="p-4  text-center " >2</th>
+          <td class="p-4  text-center">Gym Taining </td>
+          <td class="p-4  text-center">Evening Shift</td>
+          <td class="p-4  text-center" >4:00-6:00</td>
+          <td class="p-4 text-center "><div class="border border-2 rounded-pill border-success h-25 text-success text-center fw-bold">Active</div></td>
+        </tr>
+        <tr  class="ttRow">
+          <th scope="row" class="p-4  text-center " >3</th>
+          <td class="p-4 text-center ">Jacob</td>
+          <td class="p-4 text-center ">Thornton</td>
+          <td class="p-4 text-center " >@fat</td>
+          <td class="p-4 text-center "><div class="border border-2 rounded-pill border-danger h-25 text-danger text-center fw-bold">Finished</div></td>
+        </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+
+    <!-- timetable end -->
+
+    <!-- session part start -->
+    <div class="bg-white  m-2  p-2 container">
+      <h1 class="text-primary px-3 pt-1  d-inline-block m-2 ">Session</h1>
+
+
+      <div class="border border-4 p-4 mx-4 m-2 row card-body ">
+        <h3 class="d-inline-block col-3 my-auto">Morning Session</h3>
+        <h5 class="font-monospace d-inline-block col-2 my-auto fw-light text-secondary">Started: 30 January 2023</h5>
+        <h6></h6>
+      </div>
+
+
+      <div class="border border-4  p-4 m-4 card-body">
+        <h3>Evening Session</h3>
+      </div>
+    </div>
+    <!-- session part end -->
+
+    <!-- challenges part start -->
+    <div class="bg-white row">
+      <h1 class="text-primary px-3 pt-3 d-inline-block m-2">Your Challenges</h1>
+      <div class="card border-3 -rounded-1 col-3 m-4">
+        <img class="py-3 card-img " src="/img/Yoga photo.jpg" alt="">
+        <h2 class="card-img-bottom text-center"> 21 Day's Yoga </h2>
+        <p class="card-text text-center  mb-2 m-1">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id laborum voluptatibus suscipit cumque?
+        </p>
+      </div>
+    </div>
+    <!-- challenges part end -->
+
+
+
+
+
+  </div>
+
+  <!-- left part start-->
+</section>
+
+</body>
+</html>

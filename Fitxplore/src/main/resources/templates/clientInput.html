@@ -6,7 +6,7 @@
 </head>
 <body>
 <section>
-    <div class="container w-50% ">
+    <div class="container w-50%">
         <form class="shadow p-3 mb-5 bg-body rounded" th:object="${client}" th:action="@{/clientRegister}" method="post">
             <div class="container w-85">
                 <!-- header imae and heading  -->
@@ -36,83 +36,22 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" th:value="${client.firstName}" name="firstName">
+                                <input type="text" class="form-control" id="firstName" th:value="${client.name}" name="firstName">
                             </div>
-                            <div class="col-md-6">
-                                <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" th:value="${client.lastName}" name="lastName">
-                            </div>
+
                         </div>
 
                     </div>
                 </div>
 
-                <div class="row m-3">
-                    <label for="sex" class="col-sm-4 col-form-label">Sex</label>
-                    <div class="col-sm-8">
-                        <select id="sex" class="form-select" th:value="${client.sex}" name="sex">
-                            <option selected>choose</option>
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Others</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row m-3">
-                    <label for="email" class="col-sm-4 col-form-label">Email</label>
-                    <div class="col-sm-8">
-                        <input type="email" class="form-control" id="email" name="email" th:value="${client.email}">
-                    </div>
-                </div>
-
-                <div class="row m-3">
-                    <label for="contactNo" class="col-sm-4 col-form-label">Contact</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="contactNo" placeholder="(000) 00 0000" name="contactNumber" th:value="${client.contactNumber}">
-                    </div>
-                </div>
-
-                <div class="row m-3">
-                    <label  class="col-sm-4 col-form-label">Address</label>
-                    <div class="col-sm-8">
-                        <div class="row mb-3">
-                            <label for="address1" class="col-sm-4 col-form-label">Address 1</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="address1" placeholder="1234 Main St" name="address1" th:value="${client.address1}">
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="address2" class="col-sm-4 col-form-label">Address 2</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="address2" placeholder="Apartment, studio, or floor" name="address2" th:value="${client.address2}">
-                            </div>
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label for="city" class="form-label">City</label>
-                                <input type="text" class="form-control" id="city" name="city" th:value="${client.city}">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="state" class="form-label">State</label>
-                                <input type="text" class="form-control" id="state" name="state" th:value="${client.state}">
-                            </div>
-                        </div>
-                        <div class="row g-3 mb-3">
-                            <div class="col-md-7">
-                                <label for="country" class="form-label">Country</label>
-                                <input type="text" class="form-control" id="country"  name="country" th:value="${client.country}">
-                            </div>
-                            <div class="col-md-5">
-                                <label for="zip" class="form-label">Zip</label>
-                                <input type="text" class="form-control" id="zip"  name="zipCode" th:value="${client.zipCode}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
 
-                <hr>
+
+
+
+
+
+
 
                 <!-- input details section 2 -->
 
@@ -131,63 +70,10 @@
                     </div>
                 </div>
 
-                <hr>
-
-<!--                    weight height age-->
-                    <div class="row m-1">
-                        <div class="row m-3">
-                            <label for="weight" class="col-sm-4 col-form-label">Weight</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="weight" name="weight" placeholder="in kgs">
-                            </div>
-                        </div>
-                        <div class="row m-3">
-                            <label for="height" class="col-sm-4 col-form-label">Height</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="height" name="height" placeholder="inches">
-                            </div>
-                        </div>
-                        <div class="row m-3">
-                            <label for="age" class="col-sm-4 col-form-label">Age</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" name="age" id="age">
-                            </div>
-                        </div>
-
-                    </div>
 
                     <hr>
 
-                    <div class="row m-1">
-                        <div class="row m-3">
-                            <label  class="col-sm-4 col-form-label">Taking any medications,currently?</label>
-                            <div class="col-sm-8">
-                                <div class="form-check mb-1 ">
-                                    <input class="form-check-input" type="radio" name="medications" id="yesMedications">
-                                    <label class="form-check-label" for="yesMedications">
-                                        Yes
-                                    </label>
-                                </div>
-                                <div class="form-check mt-1 ">
-                                    <input class="form-check-input" type="radio" name="medications" id="noMedications" checked>
-                                    <label class="form-check-label" for="noMedications">
-                                        No
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                        <div class="row m-4">
-                            <label for="aboutMedications" class="col-sm-4 col-form-label">If Yes,please list it here </label>
-                            <div class="form-floating col-sm-8">
-                <textarea class="form-control" placeholder="Leave a comment here" id="aboutMedications" name="aboutMedications"
-                          style="height: 100px"></textarea>
-                            </div>
-
-                        </div>
-
-                        <hr>
 
                         <div class="row m-3">
                         <div class="col-sm-10 "></div>

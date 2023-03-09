@@ -7,7 +7,17 @@
 <body>
 <section>
     <div class="container w-50 " >
-        <form class="shadow p-3 mb-5 bg-body rounded" th:action="@{/trainerRegister} " th:object="${trainer}" method="post">
+2
+
+        <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert " role="alert"  >
+       <p th:text="${session.message.content}" class="text-center"></p>
+            <th:block th:text="${#session.removeAttribute('message')}" ></th:block>
+        </div>
+
+
+        <form novalidate class="shadow p-3 mb-5 bg-body rounded"
+               th:object="${trainer}" enctype="multipart/form-data"  >
+
             <div class="container w-85">
                 <!-- header image and heading  -->
                 <div class="row m-3">
@@ -40,11 +50,15 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" th:value="${trainer.firstName}" name="firstName">
+                                <input type="text" class="form-control" th:classappend="${#fields.hasErrors()?'is-invalid':''}" id="firstName" th:value="${trainer.name}" name="firstName">
+                                <div class="invalid-feedback" th:each="e:${#fields.errors('firstName')}" th:text="${e}">
+
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" th:value="${trainer.lastName}" name="lastName">
+                                <input type="text" class="form-control" id="lastName" th:value="${trainer.lastName}" name="lastName"/>
+
                             </div>
                         </div>
 
@@ -65,13 +79,15 @@
                 <div class="row m-3">
                     <label for="email" class="col-sm-4 col-form-label">Email</label>
                     <div class="col-sm-8">
-                        <input type="email" class="form-control" id="email" name="email" th:value="${trainer.email}">
+                        <input type="email" class="form-control" id="email" th:classappend="${#fields.hasErrors()?'is-invalid':''}" name="email" th:value="${trainer.email}">
+                        <div class="invalid-feedback" th:each="e:${#fields.errors('email')}" th:text="${e}"></div>
                     </div>
                 </div>
                 <div class="row m-3">
                     <label for="contactNo" class="col-sm-4 col-form-label">Contact</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="contactNo" placeholder="(000) 00 0000" name="contactNumber" th:value="${trainer.contactNumber}">
+                        <input type="text" class="form-control" id="contactNo" th:classappend="${#fields.hasErrors()?'is-invalid':''}" placeholder="(000) 00 0000" name="contactNumber" th:value="${trainer.contactNumber}">
+                        <div class="invalid-feedback" th:each="e:${#fields.errors('contactNumber')}" th:text="${e}"></div>
                     </div>
                 </div>
                 <div class="row m-3">
@@ -80,7 +96,8 @@
                         <div class="row mb-3">
                             <label for="address1" class="col-sm-4 col-form-label">Address 1</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="address1" placeholder="1234 Main St" name="address1" th:value="${trainer.address1}">
+                                <input type="text" class="form-control" id="address1" th:classappend="${#fields.hasErrors()?'is-invalid':''}" placeholder="1234 Main St" name="address1" th:value="${trainer.address1}">
+                                <div class="invalid-feedback" th:each="e:${#fields.errors('address1')}" th:text="${e}"></div>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -96,17 +113,20 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="state" class="form-label">State</label>
-                                <input type="text" class="form-control" id="state" name="state" th:value="${trainer.state}">
+                                <input type="text" class="form-control" id="state" name="state" th:classappend="${#fields.hasErrors()?'is-invalid':''}" th:value="${trainer.state}">
+                                <div class="invalid-feedback" th:each="e:${#fields.errors('state')}" th:text="${e}"></div>
                             </div>
                         </div>
                         <div class="row g-3 mb-3">
                             <div class="col-md-7">
                                 <label for="country" class="form-label">Country</label>
-                                <input type="text" class="form-control" id="country"  name="country" th:value="${trainer.country}">
+                                <input type="text" class="form-control" id="country"  name="country" th:classappend="${#fields.hasErrors()?'is-invalid':''}" th:value="${trainer.country}">
+                                <div class="invalid-feedback" th:each="e:${#fields.errors('country')}" th:text="${e}"></div>
                             </div>
                             <div class="col-md-5">
-                                <label for="zip" class="form-label">Zip</label>
-                                <input type="text" class="form-control" id="zip"  name="zipCode" th:value="${trainer.zipCode}">
+                                <label for="zip" class="form-label"  >Zip</label>
+                                <input type="text" class="form-control" id="zip" th:classappend="${#fields.hasErrors()?'is-invalid':''}" name="zipCode" th:value="${trainer.zipCode}">
+                                <div class="invalid-feedback" th:each="e:${#fields.errors('zipCode')}" th:text="${e}"></div>
                             </div>
                         </div>
                     </div>
@@ -121,13 +141,15 @@
                     <div class="row m-3">
                         <label for="username" class="col-sm-4 col-form-label">Username</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="username" name="userName">
+                            <input type="text" class="form-control"   id="username" name="userName">
+
                         </div>
                     </div>
                     <div class="row m-3">
                         <label for="password" class="col-sm-4 col-form-label">Password</label>
                         <div class="col-sm-8">
-                            <input type="password" class="form-control" id="password" name="password">
+                            <input type="password" class="form-control" th:classappend="${#fields.hasErrors()?'is-invalid':''}" id="password" name="password">
+                            <div class="invalid-feedback" th:each="e:${#fields.errors('password')}" th:text="${e}"></div>
                         </div>
                     </div>
                 </div>
@@ -158,18 +180,18 @@
                             <input type="text" class="form-control" id="workExperience" name="workExperience">
                         </div>
                     </div>
-                    <div class="row m-3">
-                        <label for="achievements" class="col-sm-4">Achievements</label>
-                        <div class="col-sm-8">
-                            <div class="input-group">
-                                <div class="col-sm-12"> <input type="file" class="form-control  " id="achievements" name="achievements"></div>
-<!--                                <div class="col-sm-3">-->
-<!--                                    <label class="input-group-text" for="achievements">Upload</label>-->
-<!--                                </div>-->
-                            </div>
+<!--                    <div class="row m-3">-->
+<!--                        <label for="achievementFile" class="col-sm-4">Achievements</label>-->
+<!--                        <div class="col-sm-8">-->
+<!--                            <div class="input-group">-->
+<!--                                <div class="col-sm-12"> <input type="file" class="form-control  " id="achievementFile" name="achievementFile"></div>-->
+<!--&lt;!&ndash;                                <div class="col-sm-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <label class="input-group-text" for="achievements">Upload</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--                            </div>-->
 
-                        </div>
-                    </div>
+<!--                        </div>-->
+<!--                    </div>-->
 
                     <div class="row m-3">
                         <label for="description" class="col-sm-4 col-form-label">Description </label>
@@ -184,10 +206,10 @@
                 <!-- upload photo -->
 
                 <div class="row m-3 my-4">
-                    <label for="uploadImage" class="col-sm-4">Upload Photo</label>
+                    <label for="image" class="col-sm-4">Upload Photo</label>
                     <div class="col-sm-8">
                         <div class="input-group">
-                            <div class="col-sm-12"> <input type="file" class="form-control  " id="uploadImage" name="uploadPhoto"></div>
+                            <div class="col-sm-12"> <input type="file" class="form-control" id="image" name="immmage"></div>
 <!--                            <div class="col-sm-3">-->
 <!--                                <label class="input-group-text" for="uploadImage">Upload</label>-->
 <!--                            </div>-->
@@ -200,16 +222,24 @@
 
                 <!-- next button -->
                 <div class="row m-3">
-                    <div class="col-sm-10 "></div>
-                    <div class="col-sm-1 m-1">
-                      <button type="submit" class="btn btn-secondary text-white"> Next></button>
+                    <div class="col-sm-4"></div>
+<!--                    <div class="col-sm-1 mx-4 w-auto">-->
+<!--                        <a onclick="paymentStart()" class="btn  btn-success w-auto rounded-pill " role="button" >Subscribe Now</a>-->
+<!--&lt;!&ndash;                        <button   class="btn btn-success " onclick="paymentStart()"> Pay ₹700 </button>&ndash;&gt;-->
+<!--                    </div>-->
+                    <div class="col-sm-1 mx-4">
+                        <button type="submit" th:method="post" th:formaction="#{/trainerRegister}"    class="btn btn-secondary text-white"> Next> </button>
                     </div>
                 </div>
+
             </div>
         </form>
+
     </div>
 
 </section>
+<script th:src="@{/js/script.js}"> </script>
+
 </body>
 </html>
 

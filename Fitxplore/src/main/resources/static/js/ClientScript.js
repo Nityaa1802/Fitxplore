@@ -1,15 +1,9 @@
-console.log("this is fitxplore")
-
-// first request to server to create order
-
-
-
-const paymentStart=()=>{
+const paymentStartClient=()=>{
     console.log("Payment Started.....");
-    const amount = 700;
+    const amount = 500;
     console.log(amount);
 
-    registerTrainer($("#name").val(),$("#username").val(),$("#password").val(),$("#email").val());
+    registerClient($("#name").val(),$("#username").val(),$("#password").val(),$("#email").val());
 
     // we will use ajax to send request to server to create order -> jQuery
     $.ajax(
@@ -21,7 +15,6 @@ const paymentStart=()=>{
 
             success:function (response){
                 // invoked where success
-
                 console.log(response)
                 if(response.status == "created"){
                     // open payment form
@@ -76,9 +69,29 @@ const paymentStart=()=>{
             }
         }
     )
-
 };
 
+function registerSubscriber(name,username,password,email){
+    $.ajax({
+            url:"/subscriberRegister",
+            data:JSON.stringify({name:name,username:username,password:password,email:email}),
+            contentType:'application/json',
+            type:'POST',
+            dataType:'json',
+        }
+    );
+}
+function updateDataClient(username,password){
+    $.ajax(
+        {
+            url: "/update_entries_client",
+            data:JSON.stringify({username:username,password:password}),
+            contentType:'application/json',
+            type:'POST',
+            dataType:'json',
+        }
+    );
+}
 function updatePaymentOnServer(payment_id, order_id, id_status){
     $.ajax(
         {url:"/update_order",
@@ -87,10 +100,8 @@ function updatePaymentOnServer(payment_id, order_id, id_status){
             type:'POST',
             dataType:'json',
             success:function (response){
-
+                updateDataClient($("#username").val(),$("#password"));
                 swal("Good job!", "Congrats !! Payment Successful", "success");
-                updateData($("#username").val(),$("#password"));
-
             },
             error:function (error){
                 swal("Failed !!", "Payment Successfull ...Currently server down we will contact you !!", "error");
@@ -98,25 +109,13 @@ function updatePaymentOnServer(payment_id, order_id, id_status){
         }
     );
 }
-function updateData(username,password){
-    $.ajax(
-        {
-            url: "/update_entries_trainer",
-            data:JSON.stringify({username:username,password:password}),
+function registerClient(name,username,password,email){
+    $.ajax({
+            url:"/clientRegister",
+            data:JSON.stringify({name:name,username:username,password:password,email:email}),
             contentType:'application/json',
             type:'POST',
             dataType:'json',
-        }
-    );
-}
-
-function registerTrainer(name,username,password,email){
-    $.ajax({
-        url:"/trainerRegister",
-        data:JSON.stringify({name:name,username:username,password:password,email:email}),
-        contentType:'application/json',
-        type:'POST',
-        dataType:'json',
         }
     );
 }
